@@ -1,24 +1,63 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args){
-		int[] DNA = new int[20];
-		
-		System.out.println("Original DNA Sequence:");
-		for (int i = 0; i<DNA.length; i++){
-			DNA[i]=(int)(Math.random()*4);
+		ArrayList<String> strand = new ArrayList<String>();
+		ArrayList<String> strand2 = new ArrayList<String>();
+		System.out.println("Original strand Sequence:");
+		for (int i = 0; i<20; i++){
+			int baseNum = (int) (Math.random() * 4);
+			String baseLet = "";
+			switch(baseNum){
+			case 0: baseLet = "A";
+			break;
+			case 1: baseLet = "T";
+			break;
+			case 2: baseLet = "C";
+			break;
+			case 3: baseLet = "G";
+			}
+			strand.add(baseLet);
 		}
-		toDNA(DNA);
+		toHelix(strand, strand2);
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter Sequence to Cut At (Indicate Split Position with Space):");
-		System.out.println("For Example: G AAT");
-		String input=scan.nextLine();
-		
-		splice(DNA, input);
+		System.out.println("");
+		System.out.println("Choose Restriction Enzyme (Indicate Number):");
+		System.out.println("1. EcoRi \n2.");
+		String input = scan.nextLine();
+
+
+		splice(strand, input);
 	}
 
-	public static int[] splice(int[] strand, String splitPos){
+	private static ArrayList<String> toHelix(ArrayList<String> strand, ArrayList<String> strand2) {
+		for(int k = 0; k<strand.size(); k++){
+			System.out.print(strand.get(k));
+		}
+		System.out.println("");
+		for(int i = 0; i<strand.size(); i++){
+			String basePair = "";
+			switch(strand.get(i)){
+			case "A": basePair = "T";
+			break;
+			case "T": basePair = "A";
+			break;
+			case "C": basePair = "G";
+			break;
+			case "G": basePair = "C";
+			break;
+			}
+			strand2.add(basePair);
+			System.out.print(strand2.get(i));
+		}
+		System.out.println("");
+		return strand2;
+		
+	}
+
+	public static ArrayList<String> splice(ArrayList<String> strand, String splitPos){
 		return strand;
 		
 	}
@@ -31,21 +70,4 @@ public class Main {
 		
 	}
 	
-	public static void toDNA(int[] a){
-		
-		for(int i = 0; i<a.length; i++){
-			String nucleotide = "";
-			switch (a[i]){
-			case 0: nucleotide = "A";
-			break;
-			case 1: nucleotide = "T";
-			break;
-			case 2: nucleotide = "C";
-			break;
-			case 3: nucleotide = "G";
-			}
-			System.out.print(nucleotide);
-		}
-		System.out.println("");
-	}
 }
