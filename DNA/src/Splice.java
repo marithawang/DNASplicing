@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args){
 		String[][] strand = new String[2][10];
-		
+
 		System.out.println("Original strand Sequence:");
 		for (int i = 0; i<strand[0].length; i++){
 			int baseNum = (int) (Math.random() * 4);
@@ -24,9 +24,12 @@ public class Main {
 		toDNA(strand);
 
 		Scanner scan = new Scanner(System.in);
+		System.out.println("");
 		System.out.println("Enter Sequence to Cut At:");
 		System.out.println("For Example: \nG AAC \nCA TG");
-		String input=scan.nextLine();
+		String input = scan.nextLine();
+		String input2 = 
+				scan.nextLine();
 
 		splice(strand, input);
 	}
@@ -48,7 +51,7 @@ public class Main {
 		}
 		return strand;
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static String[][] splice(String[][] strand, String splitPos){
@@ -71,9 +74,11 @@ public class Main {
 			}
 			for(int k = 0; k<strand[i].length; k++){
 				System.out.print(strand[i][k]);
+			}
+			if (i == 1) {
+				System.out.println("");
+			}
 		}
-		System.out.println("");
 	}
-}
 
 }
