@@ -6,7 +6,7 @@ public class Main {
 		ArrayList<String> strand = new ArrayList<String>();
 		ArrayList<String> strand2 = new ArrayList<String>();
 		System.out.println("Original strand Sequence:");
-		for (int i = 0; i<20; i++){
+		for (int i = 0; i<10; i++){
 			int baseNum = (int) (Math.random() * 4);
 			String baseLet = "";
 			switch(baseNum){
@@ -25,7 +25,7 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("");
 		System.out.println("Choose Restriction Enzyme (Indicate Number):");
-		System.out.println("1. EcoRi \n2.");
+		System.out.println("1. EcoRI \n2. MscI \n3. PsiI");
 		String input = scan.nextLine();
 
 
@@ -54,6 +54,10 @@ public class Main {
 		}
 		System.out.println("");
 		return strand2;
+		
+	}
+	
+	public static void insert(String nucleotide, ArrayList<String> strand, ArrayList<String> strand2){
 		
 	}
 
