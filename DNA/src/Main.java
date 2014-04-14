@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args){
 		ArrayList<String> strand = new ArrayList<String>();
-		ArrayList<String> strand2 = new ArrayList<String>();
 		System.out.println("Original strand Sequence:");
-		for (int i = 0; i<10; i++){
+		for (int i = 0; i<20; i++){
 			int baseNum = (int) (Math.random() * 4);
 			String baseLet = "";
 			switch(baseNum){
@@ -19,9 +18,10 @@ public class Main {
 			case 3: baseLet = "G";
 			}
 			strand.add(baseLet);
+			System.out.print(strand.get(i));
 		}
-		toHelix(strand, strand2);
 		
+		System.out.println("");
 		Scanner scan = new Scanner(System.in);
 		System.out.println("");
 		System.out.println("Choose Restriction Enzyme (Indicate Number):");
@@ -31,33 +31,9 @@ public class Main {
 
 		splice(strand, input);
 	}
-
-	private static ArrayList<String> toHelix(ArrayList<String> strand, ArrayList<String> strand2) {
-		for(int k = 0; k<strand.size(); k++){
-			System.out.print(strand.get(k));
-		}
-		System.out.println("");
-		for(int i = 0; i<strand.size(); i++){
-			String basePair = "";
-			switch(strand.get(i)){
-			case "A": basePair = "T";
-			break;
-			case "T": basePair = "A";
-			break;
-			case "C": basePair = "G";
-			break;
-			case "G": basePair = "C";
-			break;
-			}
-			strand2.add(basePair);
-			System.out.print(strand2.get(i));
-		}
-		System.out.println("");
-		return strand2;
-		
-	}
 	
-	public static void insert(String nucleotide, ArrayList<String> strand, ArrayList<String> strand2){
+	public static void insert(String nucleotide, ArrayList<String> strand){
+		
 		
 	}
 
