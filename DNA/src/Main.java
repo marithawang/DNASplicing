@@ -27,20 +27,18 @@ public class Main {
 		System.out.println("Choose Restriction Enzyme (Indicate Number):");
 		System.out.println("1. EcoRI \n2. MscI \n3. PsiI");
 		String input = scan.nextLine();
+		System.out.println("Insert Strand to Insert:");
+		String insert = scan.nextLine();
 
 
-		splice(strand, input);
+		insert(input, insert, strand);
 	}
 	
-	public static void insert(String nucleotide, ArrayList<String> strand){
+	public static void insert(String input, String insert, ArrayList<String> strand){
 		
 		
 	}
 
-	public static ArrayList<String> splice(ArrayList<String> strand, String splitPos){
-		return strand;
-		
-	}
 	public int[] transcribe(int[] strand){
 		return strand;
 		
