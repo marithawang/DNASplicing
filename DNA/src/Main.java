@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args){
-		ArrayList<String> strand = new ArrayList<String>();
+		String strand = "";
 		System.out.println("Original strand Sequence:");
 		for (int i = 0; i<20; i++){
 			int baseNum = (int) (Math.random() * 4);
@@ -17,8 +17,8 @@ public class Main {
 			break;
 			case 3: baseLet = "G";
 			}
-			strand.add(baseLet);
-			System.out.print(strand.get(i));
+			strand = strand.substring(0) + baseLet;
+			System.out.print(strand.charAt(i));
 		}
 		
 		System.out.println("");
@@ -27,23 +27,23 @@ public class Main {
 		System.out.println("Choose Restriction Enzyme (Indicate Number):");
 		System.out.println("1. EcoRI \n2. MscI \n3. PsiI");
 		String input = scan.nextLine();
-		System.out.println("Insert Strand to Insert:");
+		System.out.println("Foreign Strand to Insert:");
 		String insert = scan.nextLine();
 
 
 		insert(input, insert, strand);
 	}
 	
-	public static void insert(String input, String insert, ArrayList<String> strand){
+	public static void insert(String input, String insert, String strand){
 		
 		
 	}
 
-	public int[] transcribe(int[] strand){
+	public String transcribe(String strand){
 		return strand;
 		
 	}
-	public int[] translate(int[] strand){
+	public String translate(String strand){
 		return strand;
 		
 	}
