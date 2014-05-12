@@ -33,23 +33,24 @@ public class Main {
 
 	//	insert(input, insert, strand);
 		System.out.println("");
-		System.out.print(transcribe(strand));
-		
+		System.out.println(transcribe(strand));
+		translate(transcribe(strand));
+
 	}
-	
+
 	public static void insert(String input, String insert, String strand){
-		
-		
+
+
 	}
 
 	public static String transcribe(String strand){
 		ArrayList<String> s = new ArrayList<String>();
 		ArrayList<String> t = new ArrayList<String>();
-		
+
 		for (int i = 0; i < strand.length(); i++) {
 			s.add(strand.substring(i, i + 1));
 		}
-		
+
 		for (int j = 0; j < s.size(); j++) {
 			if (s.get(j).equals("A")) {
 				t.add("U");
@@ -62,47 +63,104 @@ public class Main {
 			}
 		}
 		String transcribedStrand = "";
-		
+
 		for (int k = 0; k < t.size(); k++){
 			transcribedStrand = transcribedStrand + t.get(k);
 		}
 		return transcribedStrand;
-		
-	}
-	public static String translate(String strand){
-		String temp = " ";
-		for (int i= 1; i<= strand.length(); i++){
-		temp += strand.substring(i-1, i);
-		if (i%3 == 0){
-			anticodon(temp);
-			temp = " ";
-		}
-		}
-		return strand;
-		
+
 	}
 	
-	public static String anticodon(String temp){
-		String print = " ";
-		if(temp == null){
-			return print;
+	public static void translate(String strand){
+		for (int i = 0; i < strand.length()/3; i++) {
+			if (aminoAcid(strand.substring(i*3, i*3+3)).equals("Stop")) {
+				break;
+			} else {
+				System.out.println(aminoAcid(strand.substring(i*3, i*3+3)));
+			}
 		}
-		switch (temp.toLowerCase()){
-		case "uuu":
-			print = Phe;
-			break;
-		case "uuc":
-			print= Phe;
-			break;
-		case "uua":
-			print = Leu;
-			break;
-		case "uug":
-			print = Leu;
-			break;
-			
-		}
-		
 	}
 	
+	public static String aminoAcid(String codon) {
+		char nucleotide1 = codon.charAt(0);
+		char nucleotide2 = codon.charAt(1);
+		char nucleotide3 = codon.charAt(2);
+		
+		if (nucleotide1 == 'G') {
+			if (nucleotide2 == 'G') {
+				return "Glycine";
+			} else if (nucleotide2 == 'U') {
+				return "Valine";
+			} else if (nucleotide2 == 'C') {
+				return "Alanine";
+			} else {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Aspartic Acid";
+				} else {
+					return "Glutamic Acid";
+				}
+			}
+		} else if (nucleotide1 == 'C') {
+			if (nucleotide2 == 'G') {
+				return "Arginine";
+			} else if (nucleotide2 == 'U') {
+				return "Leucine";
+			} else if (nucleotide2 == 'C') {
+				return "Proline";
+			} else {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Histidine";
+				} else {
+					return "Glutamine";
+				}
+			}
+		} else if (nucleotide1 == 'A'){
+			if (nucleotide2 == 'C') {
+				return "Threonine";
+			} else if (nucleotide2 == 'G') {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Serine";
+				} else {
+					return "Arginine";
+				}
+			} else if (nucleotide2 == 'A') {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Asparagine";
+				} else {
+					return "Lysine";
+				}
+			} else {
+				if (nucleotide3 == 'A' || nucleotide3 == 'C' || nucleotide3 == 'U') {
+					return "Isoleucine";
+				} else {
+					return "Methionine";
+				}
+			}
+		} else {
+			if (nucleotide2 == 'C') {
+				return "Serine";
+			} else if (nucleotide2 == 'U') {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Phenyl-alanine";
+				} else {
+					return "Leucine";
+				}
+			} else if (nucleotide2 == 'A') {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Tyrosine";
+				} else {
+					return "Stop";
+				}
+			} else {
+				if (nucleotide3 == 'U' || nucleotide3 == 'C') {
+					return "Cysteine";
+				} else if (nucleotide3 == 'G') {
+					return "Tryptophan";
+				} else {
+					return "Stop";
+				}
+			}
+		}
+	}
+
 }
