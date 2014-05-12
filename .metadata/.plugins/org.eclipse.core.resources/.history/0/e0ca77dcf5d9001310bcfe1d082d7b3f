@@ -70,10 +70,6 @@ public class Main {
 		
 	}
 	public static String translate(String strand){
-
-		for (int i= 1; i<= strand.length(); i++){
-		
-		}
 		return strand;
 		
 	}
