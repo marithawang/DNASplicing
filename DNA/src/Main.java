@@ -74,6 +74,7 @@ public class Main {
 	public static void translate(String strand){
 		for (int i = 0; i < strand.length()/3; i++) {
 			if (aminoAcid(strand.substring(i*3, i*3+3)).equals("Stop")) {
+				System.out.println("Stop");
 				break;
 			} else {
 				System.out.println(aminoAcid(strand.substring(i*3, i*3+3)));
