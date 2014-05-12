@@ -72,12 +72,14 @@ public class Main {
 	}
 	
 	public static void translate(String strand){
-		for (int i = 0; i < strand.length()/3; i++) {
-			if (aminoAcid(strand.substring(i*3, i*3+3)).equals("Stop")) {
-				System.out.println("Stop");
+		String temp= " ";
+		for (int i = 0; i < strand.length(); i++) {
+			temp += strand.substring(i, i+1);
+			if (aminoAcid(temp).equals("Stop")) {
 				break;
 			} else {
-				System.out.println(aminoAcid(strand.substring(i*3, i*3+3)));
+				System.out.println(aminoAcid(temp));
+				temp =" ";
 			}
 		}
 	}
