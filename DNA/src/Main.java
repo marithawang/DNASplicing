@@ -88,7 +88,19 @@ public class Main {
 			return print;
 		}
 		switch (temp.toLowerCase()){
-		case 
+		case "uuu":
+			print = Phe;
+			break;
+		case "uuc":
+			print= Phe;
+			break;
+		case "uua":
+			print = Leu;
+			break;
+		case "uug":
+			print = Leu;
+			break;
+			
 		}
 		
 	}
