@@ -73,23 +73,8 @@ public class Main {
 		String temp = " ";
 		for (int i= 1; i<= strand.length(); i++){
 		temp += strand.substring(i-1, i);
-		if (i%3 == 0){
-			anticodon(temp);
-			temp = " ";
-		}
 		}
 		return strand;
-		
-	}
-	
-	public static String anticodon(String temp){
-		String print = " ";
-		if(temp == null){
-			return print;
-		}
-		switch (temp.toLowerCase()){
-		case 
-		}
 		
 	}
 	
