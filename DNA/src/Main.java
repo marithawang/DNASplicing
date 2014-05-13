@@ -7,9 +7,9 @@ public class Main {
 	private static String insert;
 	private static String total = "";
 
-	public static void main(String[] args){
-		System.out.println("Original strand Sequence:");
-		for (int i = 0; i<20; i++){
+	public static void main(String[] args) throws Exception{
+		System.out.println("Original DNA Strand:");
+		for (int i = 0; i<1000; i++){
 
 			int baseNum = (int) (Math.random() * 4);
 
@@ -31,22 +31,32 @@ public class Main {
 		System.out.println("");
 		Scanner scan = new Scanner(System.in);
 		System.out.println("");
-		System.out.println("Enter Sequence to Insert New DNA At:");
+		System.out.println("Enter Restriction Enzyme: (Choose a number)");
+		System.out.println("1. EcoRI");
+		System.out.println("2. BamHI");
 		input = scan.nextLine();
 		System.out.println("Foreign Strand to Insert:");
 		insert = scan.nextLine();
-
-		if(isOkay(input, insert)){
-			insertDNA();
-			transcribe();
-			translate();
-			System.out.println("");
+		
+		if (isOkay()){
+		insertDNA();
+		transcribe();
+		translate();
+		System.out.println("");
 		}
+		else{
+			throw new Exception("Invalid Input/s");
+		}
+
 	}
 
-	private static boolean isOkay(String input2, String insert2) {
-		
-		return true;
+	private static boolean isOkay() {
+		if(input.matches("^[1-2]") && insert.matches("^[A, C, T, G]")){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	public static void insertDNA(){
@@ -56,6 +66,7 @@ public class Main {
 			total = total.substring(0, index+input.length()) + insert + total.substring(index+3);
 		}
 		System.out.print(total);
+		System.out.println("");
 	}
 
 	public static void transcribe(){
@@ -91,13 +102,13 @@ public class Main {
 		System.out.println("");
 		System.out.println("Amino Acids:");
 		for (int i = 0; i < total.length()/3; i++) {
-			if (aminoAcid(total.substring(i*3, i*3+3)).equals("Stop")) {
+			if (aminoAcid(total.substring(i*3, i*3+3)).equals("Stop ")) {
+				System.out.println("Stop");
 				break;
 			} else {
 				System.out.print(aminoAcid(total.substring(i*3, i*3+3)));
 			}
 		}
-		System.out.println("Stop");
 	}
 
 	public static String aminoAcid(String codon) {
