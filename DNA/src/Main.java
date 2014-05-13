@@ -47,9 +47,8 @@ public class Main {
 		if(total.contains(input)){
 			int index = total.indexOf(input);
 			total = total.substring(0, index+3) + insert + total.substring(index+3);
-			System.out.print(total);
 		}
-
+		System.out.print(total);
 	}
 
 	public static void transcribe(){
@@ -85,7 +84,7 @@ public class Main {
 		System.out.println("");
 		System.out.println("Amino Acids:");
 		for (int i = 0; i < total.length()/3; i++) {
-			if (aminoAcid(total.substring(i*3, i*3+3)).equals("Stop")) {
+			if (aminoAcid(total.substring(i*3, i*3+3)).equals("Stop ")) {
 				System.out.println("Stop");
 				break;
 			} else {
