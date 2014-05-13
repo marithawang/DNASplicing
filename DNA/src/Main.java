@@ -51,7 +51,7 @@ public class Main {
 	}
 
 	private static boolean isOkay() {
-		if(input.matches("^[1-2]") && insert.matches("^[A, C, T, G]")){
+		if(input.matches("^[1-2]+$") && insert.matches("^[A,C,T,G]+$")){
 			return true;
 		}
 		else{
