@@ -3,13 +3,14 @@ import java.util.Scanner;
 
 public class Main {
 
-	private static String input;
+	private static String restrictionEnzyme = "";
+	private static String num;
 	private static String insert;
 	private static String total = "";
 
 	public static void main(String[] args) throws Exception{
 		System.out.println("Original DNA Strand:");
-		for (int i = 0; i<1000; i++){
+		for (int i = 0; i<10; i++){
 
 			int baseNum = (int) (Math.random() * 4);
 
@@ -32,26 +33,45 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("");
 		System.out.println("Enter Restriction Enzyme: (Choose a number)");
-		System.out.println("1. EcoRI");
+		System.out.println("1. SmaI");
 		System.out.println("2. BamHI");
-		input = scan.nextLine();
+		System.out.println("3. AluI");
+		System.out.println("4. StuI");
+		num = scan.nextLine();
 		System.out.println("Foreign Strand to Insert:");
 		insert = scan.nextLine();
 		
 		if (isOkay()){
+		enzymeSelector();
 		insertDNA();
 		transcribe();
 		translate();
 		System.out.println("");
 		}
 		else{
-			throw new Exception("Invalid Input/s");
+			throw new Exception("Invalid restrictionEnzyme/s");
 		}
 
 	}
 
+	private static void enzymeSelector() {
+		if (num.equals("1")) { // SmaI
+			restrictionEnzyme = "CCCGGG";
+		} else if (num.equals("2")) { // BamHI
+			restrictionEnzyme = "GGCC";
+		} else if (num.equals("3")){
+			restrictionEnzyme = "AGCT";
+		} else if (num.equals("4")){
+			restrictionEnzyme = "AGGCCT";
+		}
+		else {
+			System.out.println("Restriction enzyme does not exist.");
+		}
+		
+	}
+
 	private static boolean isOkay() {
-		if(input.matches("^[1-2]+$") && insert.matches("^[A,C,T,G]+$")){
+		if(num.matches("^[1-2]+$") && insert.matches("^[A,C,T,G]+$")){
 			return true;
 		}
 		else{
@@ -61,9 +81,10 @@ public class Main {
 
 	public static void insertDNA(){
 		System.out.println("New DNA Strand:");
-		if(total.contains(input)){
-			int index = total.indexOf(input);
-			total = total.substring(0, index+input.length()) + insert + total.substring(index+3);
+		System.out.println(total);
+		if(total.contains(restrictionEnzyme)){
+			int index = total.indexOf(restrictionEnzyme);
+			total = total.substring(0, index+restrictionEnzyme.length()/2) + insert + total.substring(index + restrictionEnzyme.length()/2);
 		}
 		System.out.print(total);
 		System.out.println("");
